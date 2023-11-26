@@ -11,7 +11,7 @@ async function connect() {
 
 async function selectAdmins() {
   const client = await connect();
-  const res = await client.query("SELECT * FROM usuario");
+  const res = await client.query("SELECT * FROM admin");
   return res.rows;
 }
 
