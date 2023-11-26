@@ -26,7 +26,7 @@ async function selectAdmin(id) {
 //bd.js
 async function insertAdmin(data) {
   const client = await connect();
-  const query = "INSERT INTO Admin (usuario, senha, email_identificador ) VALUES ($1,$2,$3) ";
+  const query = "INSERT INTO Administrador (usuario, senha, email_identificador ) VALUES ($1,$2,$3) ";
   const admin = [data.usuario, data.senha, data.email_identificador ];
   await client.query(query, admin);
 }

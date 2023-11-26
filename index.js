@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     });
   });
   
-  app.get("/Admins", async (req, res) => {
+  app.get("/admins", async (req, res) => {
     try {
       const admins = await selectAdmins();
       res.json(admins);
