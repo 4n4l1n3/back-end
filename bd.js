@@ -30,4 +30,10 @@ async function insertAdministrador(data) {
   await client.query(query, administrador);
 }
 
-export { selectAdministradores, selectAdministrador, insertAdministrador };
+async function deleteAdministrador(id) {
+  const client = await connect();
+  const query = "DELETE FROM administrador WHERE id = $3";
+  await client.query(query, [id]);
+}
+
+export { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador };
