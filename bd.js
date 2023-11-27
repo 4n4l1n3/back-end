@@ -25,7 +25,7 @@ async function selectAdministrador(id) {
 
 async function insertAdministrador(data) {
   const client = await connect();
-  const query = "INSERT INTO administrador (usuario,senha,email_identificador) VALUES ($1,$2) ";
+  const query = "INSERT INTO administrador (usuario,senha,email_identificador) VALUES ($1,$2,$3) ";
   const administrador = [data.usuario, data.senha, data.email_identificador];
   await client.query(query, administrador);
 }
