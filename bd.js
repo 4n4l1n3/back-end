@@ -32,7 +32,7 @@ async function insertAdministrador(data) {
 
 async function deleteAdministrador(id) {
   const client = await connect();
-  const query = "DELETE FROM administrador WHERE id = $3";
+  const query = "DELETE FROM administrador WHERE id = $1";
   await client.query(query, [id]);
 }
 
