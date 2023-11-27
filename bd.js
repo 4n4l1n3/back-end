@@ -36,4 +36,12 @@ async function deleteAdministrador(id) {
   await client.query(query, [id]);
 }
 
-export { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador };
+async function updateAdministrador(data) {
+  const client = await connect();
+  const query =
+    "UPDATE administrador SET usuario = $1, email_identificador = $2, senha = $3 WHERE id = $4";
+  const administrador = [data.usuario, data.email_identificador, data.senha, data.id];
+  await client.query(query, administrador);
+}
+
+export { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador,updateAdministrador };

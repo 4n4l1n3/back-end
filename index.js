@@ -4,6 +4,7 @@ import { selectAdministradores } from "./bd.js";
 import { selectAdministrador } from "./bd.js";
 import { insertAdministrador } from "./bd.js";
 import { deleteAdministrador } from "./bd.js";
+import { updateAdministrador } from "./bd.js";
 
 dotenv.config();
 
@@ -60,6 +61,20 @@ app.delete("/administrador/:id", async (req, res) => {
       res.status(200).json({ message: "Administrador excluido com sucesso!!" });
     } else res.status(404).json({ message: "Administrador não encontrado!" });
   } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
+
+app.put("/administrador", async (req, res) => {
+  console.log("Rota PUT /administrador solicitada");
+  try {
+    const administrador = await selectAdministrador(req.body.id);
+    if (administrador.length > 0) {
+      await updateAdministrador(req.body);
+      res.status(200).json({ message: "Administrador atualizado com sucesso!" });
+    } else res.status(404).json({ message: "Administrador não encontrado!" });
+  } catch (error) {
+    console.log(error);
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
 });
