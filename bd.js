@@ -9,26 +9,26 @@ async function connect() {
   return pool.connect();
 }
 
-async function selectAdmins() {
+async function selectAdministradores() {
   const client = await connect();
-  const res = await client.query("SELECT * FROM admin");
+  const res = await client.query("SELECT * FROM Administrador");
   return res.rows;
 }
 
-async function selectAdmin(id) {
+async function selectAdministrador(id) {
   const client = await connect();
-  const query = "SELECT * FROM admin WHERE id = $1";
-  const admin = [id];
-  const res = await client.query(query,admin);
+  const query = "SELECT * FROM administrador WHERE id = $1";
+  const administrador = [id];
+  const res = await client.query(query,administrador);
   return res.rows;
 }
 
 //bd.js
-async function insertAdmin(data) {
+async function insertAdministrador(data) {
   const client = await connect();
-  const query = "INSERT INTO Administrador (usuario, senha, email_identificador ) VALUES ($1,$2,$3) ";
-  const admin = [data.usuario, data.senha, data.email_identificador ];
-  await client.query(query, admin);
+  const query = "INSERT INTO administrador (usuario, senha, email_identificador ) VALUES ($1,$2,$3) ";
+  const administrador = [data.usuario, data.senha, data.email_identificador ];
+  await client.query(query, administrador);
 }
 
-export { selectAdmins, selectAdmin, insertAdmin };
+export { selectAdministradores, selectAdministrador, insertAdministrador };
