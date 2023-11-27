@@ -5,6 +5,7 @@ import { selectAdministrador } from "./bd.js";
 import { insertAdministrador } from "./bd.js";
 import { deleteAdministrador } from "./bd.js";
 import { updateAdministrador } from "./bd.js";
+import { selectDocumentos} from "./bd.js";
 
 dotenv.config();
 
@@ -77,6 +78,16 @@ app.put("/administrador", async (req, res) => {
     console.log(error);
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
+});
+
+app.get("/documentos", async (req, res) => {
+  try {
+    const documentos = await selectDocumentos();
+    res.json(documentos);
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+  console.log("Rota GET/documentos solicitada");
 });
 
 app.listen(port, () => {            // Um socket para "escutar" as requisições

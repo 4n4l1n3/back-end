@@ -1,4 +1,3 @@
-//bd.js
 import pkg from "pg";
 const { Pool } = pkg;
 
@@ -44,4 +43,9 @@ async function updateAdministrador(data) {
   await client.query(query, administrador);
 }
 
-export { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador,updateAdministrador };
+async function selectDocumentos() {
+  const client = await connect();
+  const res = await client.query("SELECT * FROM documento");
+  return res.rows;
+}
+export { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador,updateAdministrador, selectDocumentos };
