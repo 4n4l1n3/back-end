@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";  
-import roteadorAdministrador from "./routes/administrador";
-import roteadorDocumento from "./routes/documento";
+import roteadorAdministrador from "./routes/administrador.js";
+import roteadorDocumento from "./routes/documento.js";
 
 dotenv.config();
 
