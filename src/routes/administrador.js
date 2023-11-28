@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador } from "../db/index.js"
+import verificarAutenticacao from "../middlewares/autenticacao.js";
 
 const router = Router();
 
@@ -24,7 +25,7 @@ router.get("/administrador/:id", async (req, res) => {
     }
 });
 
-router.post("/administrador", async (req, res) => {
+router.post("/administrador", verificarAutenticacao, async (req, res) => {
     console.log("Rota POST /administrador solicitada");
     try {
         await insertAdministrador(req.body);
@@ -34,7 +35,7 @@ router.post("/administrador", async (req, res) => {
     }
 });
 
-router.delete("/administrador/:id", async (req, res) => {
+router.delete("/administrador/:id", verificarAutenticacao, async (req, res) => {
     console.log("Rota DELETE /administrador solicitada");
     try {
         const administrador = await selectAdministrador(req.params.id);
@@ -47,7 +48,7 @@ router.delete("/administrador/:id", async (req, res) => {
     }
 });
 
-router.put("/administrador", async (req, res) => {
+router.put("/administrador", verificarAutenticacao, async (req, res) => {
     console.log("Rota PUT /administrador solicitada");
     try {
         const administrador = await selectAdministrador(req.body.id);

@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(roteadorAdministrador);
 app.use(roteadorDocumento);
 app.use(roteadorLogin);
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");
