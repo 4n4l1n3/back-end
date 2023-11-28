@@ -4,8 +4,8 @@ import {
     selectDocumento,
     insertDocumento,
     deleteDocumento,
-    updateDocumento
-} from "../db/index";
+    updateDocumento 
+    } from "./bd.js";
 
 const router = Router();
 
