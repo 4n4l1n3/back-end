@@ -48,4 +48,20 @@ async function selectDocumentos() {
   const res = await client.query("SELECT * FROM documento");
   return res.rows;
 }
-export { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador,updateAdministrador, selectDocumentos };
+
+async function selectDocumento(id) {
+  const client = await connect();
+  const query = "SELECT * FROM documento WHERE id = $1";
+  const documento = [id];
+  const res = await client.query(query,documento);
+  return res.rows;
+}
+
+export {selectAdministradores, 
+        selectAdministrador, 
+        insertAdministrador, 
+        deleteAdministrador,
+        updateAdministrador, 
+        selectDocumentos,
+        selectDocumento
+        };
