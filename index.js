@@ -152,7 +152,7 @@ app.get("/dowload/:id", async (req, res) => {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
     var path = require("path");
-    var file = path.join(_dirname, "./file.docx");
+    var file = path.join(_dirname, "./file.pdf");
     res.dowload(file, function (err) {
       if (err) {
         console.log("Erro");
