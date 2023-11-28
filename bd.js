@@ -61,5 +61,6 @@ async function insertDocumento(data) {
   const query = "INSERT INTO documento (nome, descricao) VALUES ($1,$2) ";
   const documento = [data.nome, data.descricao];
   await client.query(query, documento);
+}
 
 export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento};
