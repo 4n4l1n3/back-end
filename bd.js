@@ -69,4 +69,11 @@ async function deleteDocumento(id) {
   await client.query(query, [id]);
 }
 
-export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento, deleteDocumento};
+async function updateDocumento(data) {
+  const client = await connect();
+  const query = "UPDATE documento SET nome = $1, descricao = $2 WHERE id = $3";
+  const documento = [data.nome, data.descricao, data.id];
+  await client.query(query, documento);
+}
+
+export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento};
