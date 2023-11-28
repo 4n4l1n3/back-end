@@ -117,7 +117,7 @@ app.post("/documento", async (req, res) => {
 app.delete("/documento/:id", async (req, res) => {
   console.log("Rota DELETE /documento solicitada");
   try {
-    const documento = await selectAdministrador(req.params.id);
+    const documento = await selectDocumento(req.params.id);
     if (documento.length > 0) {
       await deleteDocumento(req.params.id);
       res.status(200).json({ message: "Documento excluido com sucesso!!" });
