@@ -65,7 +65,7 @@ async function insertDocumento(data) {
 
 async function deleteDocumento(id) {
   const client = await connect();
-  const query = "DELETE FROM documento WHERE id = $1";
+  const query = "DELETE FROM documento WHERE id = $10";
   await client.query(query, [id]);
 }
 
