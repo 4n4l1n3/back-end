@@ -143,9 +143,16 @@ app.put("/documento", async (req, res) => {
 });
 
 app.get("/download", async (req, res) => {
+  console.log("Rota GET /download solicitada");
+  try {
+    const documento = await selectDocumento(req.params.id);
+    if (documento.length > 0) res.json(documento);
+    else res.status(404).json({ message: "Documento não encontrado!" });
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
     var path = require("path");
     var file = path.join(_dirname, "./file.pdf");
-
     res.download(file, function (err) {
       if (err) {
         console.log("Erro");
