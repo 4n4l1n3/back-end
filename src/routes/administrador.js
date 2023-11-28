@@ -5,7 +5,7 @@ import {
     insertAdministrador,
     deleteAdministrador,
     updateAdministrador
-} from "../db/index.js";
+} from "../db/index";
 
 const router = Router();
 
