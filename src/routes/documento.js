@@ -5,7 +5,7 @@ import {
     insertDocumento,
     deleteDocumento,
     updateDocumento 
-    } from "./bd.js";
+    } from "../db/index.js";
 
 const router = Router();
 
