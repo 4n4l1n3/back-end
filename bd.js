@@ -37,8 +37,7 @@ async function deleteAdministrador(id) {
 
 async function updateAdministrador(data) {
   const client = await connect();
-  const query =
-    "UPDATE administrador SET usuario = $1, email_identificador = $2, senha = $3 WHERE id = $4";
+  const query = "UPDATE administrador SET usuario = $1, email_identificador = $2, senha = $3 WHERE id = $4";
   const administrador = [data.usuario, data.email_identificador, data.senha, data.id];
   await client.query(query, administrador);
 }
@@ -57,11 +56,10 @@ async function selectDocumento(id) {
   return res.rows;
 }
 
-export {selectAdministradores, 
-        selectAdministrador, 
-        insertAdministrador, 
-        deleteAdministrador,
-        updateAdministrador, 
-        selectDocumentos,
-        selectDocumento
-        };
+async function insertDocumento(data) {
+  const client = await connect();
+  const query = "INSERT INTO documento (nome, descricao) VALUES ($1,$2) ";
+  const documento = [data.nome, data.descricao];
+  await client.query(query, documento);
+
+export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento};
