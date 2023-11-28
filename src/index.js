@@ -1,5 +1,5 @@
-import express from "express";      // Requisição do pacote do express
 import dotenv from "dotenv";
+import express from "express";  
 import roteadorAdministrador from "./routes/administrador";
 import roteadorDocumento from "./routes/documento";
 
