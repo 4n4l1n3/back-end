@@ -142,6 +142,27 @@ app.put("/documento", async (req, res) => {
   }
 });
 
+app.get("/documento/:id/dowload", async (req, res) => {
+  console.log("Rota GET /documento solicitada");
+  try {
+    const documento = await selectDocumento(req.params.id);
+    if (documento.length > 0) res.json(documento);
+    else res.status(404).json({ message: "Documento não encontrado!" });
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+    var path = require("path");
+    var file = path.join(_dirname, "./file.docx");
+    res.dowload(file, function (err) {
+      if (err) {
+        console.log("Erro");
+        console.log(err);
+      } else {
+        console.log("Sucesso");
+      }
+    });
+});
+
 app.listen(port, () => {            // Um socket para "escutar" as requisições
   console.log(`Serviço escutando na porta:  ${port}`);
 });
