@@ -7,6 +7,7 @@ import { deleteAdministrador } from "./bd.js";
 import { updateAdministrador } from "./bd.js";
 import { selectDocumentos} from "./bd.js";
 import { selectDocumento } from "./bd.js";
+import { insertDocumento } from "./bd.js";
 
 dotenv.config();
 
