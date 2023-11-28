@@ -1,5 +1,7 @@
 import express from "express";      // Requisição do pacote do express
 import dotenv from "dotenv";
+import roteadorAdministrador from "./routes/administrador";
+import roteadorDocumento from "./routes/documento";
 
 dotenv.config();
 
@@ -7,7 +9,8 @@ const app = express();              // Instancia o Express
 const port = 3000;                  // Define a porta
 
 app.use(express.json());
-app.use(roteadorUsuario);
+app.use(roteadorAdministrador);
+app.use(roteadorDocumento);
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");
