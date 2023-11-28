@@ -8,6 +8,7 @@ import { updateAdministrador } from "./bd.js";
 import { selectDocumentos} from "./bd.js";
 import { selectDocumento } from "./bd.js";
 import { insertDocumento } from "./bd.js";
+import { deleteDocumento } from "./bd.js";
 
 dotenv.config();
 
@@ -108,6 +109,19 @@ app.post("/documento", async (req, res) => {
   try {
     await insertDocumento(req.body);
     res.status(201).json({ message: "Documento inserido com sucesso!" });
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
+
+app.delete("/documento/:id", async (req, res) => {
+  console.log("Rota DELETE /documento solicitada");
+  try {
+    const documento = await selectAdministrador(req.params.id);
+    if (documento.length > 0) {
+      await deleteDocumento(req.params.id);
+      res.status(200).json({ message: "Documento excluido com sucesso!!" });
+    } else res.status(404).json({ message: "Documento não encontrado!" });
   } catch (error) {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }

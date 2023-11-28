@@ -63,4 +63,10 @@ async function insertDocumento(data) {
   await client.query(query, documento);
 }
 
-export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento};
+async function deleteDocumento(id) {
+  const client = await connect();
+  const query = "DELETE FROM documento WHERE id = $1";
+  await client.query(query, [id]);
+}
+
+export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento, deleteDocumento};
