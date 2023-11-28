@@ -1,11 +1,5 @@
 import { Router } from "express";
-import {
-    selectDocumentos,
-    selectDocumento,
-    insertDocumento,
-    deleteDocumento,
-    updateDocumento 
-    } from "../db/index.js";
+import { selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento } from "../db/index.js";
 
 const router = Router();
 

@@ -1,11 +1,5 @@
 import { Router } from "express";
-import {
-    selectAdministradores,
-    selectAdministrador,
-    insertAdministrador,
-    deleteAdministrador,
-    updateAdministrador
-} from "../db/index.js";
+import { selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador } from "../db/index.js"
 
 const router = Router();
 
