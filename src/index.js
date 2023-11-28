@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";  
 import roteadorAdministrador from "./routes/administrador.js";
 import roteadorDocumento from "./routes/documento.js";
+import roteadorLogin from "./routes/login.js";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const port = 3000;                  // Define a porta
 app.use(express.json());
 app.use(roteadorAdministrador);
 app.use(roteadorDocumento);
+app.use(roteadorLogin);
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");

@@ -76,4 +76,13 @@ async function updateDocumento(data) {
   await client.query(query, documento);
 }
 
-export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento};
+// src/db/index.js
+async function autenticarAdministrador(email_identificador, senha) {
+  const client = await connect();
+  const query = "SELECT * FROM administrador  WHERE email_identificador  = $1 AND senha = $2";
+  const administrador = [email_identificador, senha];
+  const res = await client.query(query, administrador);
+  return res.rows[0];
+}
+
+export {selectAdministradores, selectAdministrador, insertAdministrador, deleteAdministrador, updateAdministrador, selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento, autenticarAdministrador};
