@@ -142,8 +142,8 @@ app.put("/documento", async (req, res) => {
   }
 });
 
-app.get("/documento/:id/dowload", async (req, res) => {
-  console.log("Rota GET /documento solicitada");
+app.get("/dowload/:id", async (req, res) => {
+  console.log("Rota GET /dowload solicitada");
   try {
     const documento = await selectDocumento(req.params.id);
     if (documento.length > 0) res.json(documento);
